@@ -14,7 +14,7 @@ using namespace std;
 #if !LAB6_TEST1
 #  include "StackArray.cpp"
 #else
-#  include "StackLinked.cpp"
+#include "StackLinked.cpp"
 #endif
 
 void print_help()

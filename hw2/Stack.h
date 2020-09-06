@@ -13,19 +13,33 @@
 #include <stdexcept>
 #include <iostream>
 
-#include "Node.h"
-
 using namespace std;
 
 template <typename DataType>
 class Stack {
-  private:
-    Node<DataType>
 
   public:
+    int cnt = 0;
+
+    struct Node{
+      DataType dat;
+      Node *next;
+    };
+
+    Node* top = NULL;
+
     static const int MAX_STACK_SIZE = 8;
 
+    //Pre: none
+    //Post: constructor; creates empty stack (enough memory for maxNumber)
     virtual Stack();
+
+    //Pre: none
+    //Post: copy constructor; initializes stack to be equivalent to the other
+    //      Stack object parameter
+    virtual Stack(const Stack& other);
+
+    virtual Stack& operator= (const Stack& other);
 
     virtual ~Stack();
 
@@ -53,43 +67,15 @@ class Stack {
     //Post: outputs the data in the stack; if empty it outputs "empty stack"
     //      mainly for debugging; only supports predefined datatypes
     virtual void showStructure() const = 0;
-};
 
-template <typename DataType>
-Stack<DataType>::Stack(){
-  DataType *nextEntry = NULL;
-  DataType *placeHolder = NULL;
 
-  int cnt = MAX_STACK_SIZE;
-
-  while (cnt--){
-    if(!nextEntry){
-      nextEntry = new DataType;
-    }else{
-      placeHolder = new DataType;
-      nextEntry = placeHolder;
-    }
-  }
-  {
-    /* code */
-  }
   
-}
 
-template <typename DataType>
-Stack<DataType>::Stack(){
-
-}
+};
 
 template <typename DataType>
 Stack<DataType>::~Stack() 
 // Not worth having a separate class implementation file for the destuctor
 {}
-
-template <typename DataType>
-void Stack<DataType>::push(const DataType& newDataItem) throw (logic_error){
-  DataType *entry = new DataType;
-  entry->
-}
 
 #endif		// #ifndef STACK_H
