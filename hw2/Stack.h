@@ -39,6 +39,9 @@ class Stack {
     //      Stack object parameter
     virtual Stack(const Stack& other);
 
+    //Pre: none
+    //Post: sets the stack to be equivalent to the other stack object parameter
+    //      and returns a reference to the modified stack
     virtual Stack& operator= (const Stack& other);
 
     virtual ~Stack();
