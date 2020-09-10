@@ -52,7 +52,6 @@ class StackLinked : public Stack<DataType> {
     StackNode* top;
 };
 
-#endif		//#ifndef STACKARRAY_H
 
 template <typename DataType>
 StackLinked<DataType>::StackLinked(int maxNumber = Stack<DataType>::MAX_STACK_SIZE){
@@ -146,3 +145,5 @@ template <typename DataType>
 bool StackLinked<DataType>:: isFull() const{
     return !(top==NULL);
 }
+
+#endif		//#ifndef STACKARRAY_H
