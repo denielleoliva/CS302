@@ -80,7 +80,7 @@ StackLinked<DataType>::StackLinked(const StackLinked& other){
 }
 
 template <typename DataType>
-StackLinked& StackLinked<DataType>::operator=(const StackLinked& other){
+StackLinked<DataType>& StackLinked<DataType>::operator=(const StackLinked& other){
   if(this != &other){
 
     clear();
