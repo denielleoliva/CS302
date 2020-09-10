@@ -40,10 +40,13 @@ class StackLinked : public Stack<DataType> {
 
     class StackNode {
       public:
-	StackNode(const DataType& nodeData, StackNode* nextPtr);
+	      StackNode(const DataType& nodeData, StackNode* nextPtr){
+          dataItem = nodeData;
+          next = nextPtr;
+        }
 
-	DataType dataItem;
-	StackNode* next;
+	      DataType dataItem;
+	      StackNode* next;
     };
 
     StackNode* top;
