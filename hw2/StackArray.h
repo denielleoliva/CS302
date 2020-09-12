@@ -47,7 +47,7 @@ StackArray<DataType>::StackArray(int maxNumber): maxSize(maxNumber), top(-1){
 
 template <typename DataType>
 StackArray<DataType>::StackArray(const StackArray &other) : maxSize(other.maxSize), top(other.top){
-  dataItems new DataType[maxSize];
+  dataItems = new DataType[maxSize];
 
   for(int i = 0; i<top; i++){
     dataItems[i] = other.dataItems[i];
@@ -64,7 +64,7 @@ StackArray<DataType>& StackArray<DataType>:: operator=(const StackArray& other){
 
     top = other.top;
 
-    dataItems = new dataItems[maxSize];
+    dataItems = new DataType[maxSize];
 
     for(int i = 0; i<top; i++){
       dataItems[i]=other.dataItems[i];
@@ -81,7 +81,7 @@ StackArray<DataType>::~StackArray(){
 
 template <typename DataType>
 void StackArray<DataType>:: push(const DataType& newDataItem) throw (logic_error){
-  if(isFull){
+  if(isFull()){
     throw logic_error("Stack is full. Cannot push() to stack.");
   }
 
@@ -113,6 +113,37 @@ bool StackArray<DataType>::isFull() const{
   return top == maxSize -1;
 }
 
+template <typename DataType>
+void StackArray<DataType>::showStructure() const 
 
+// Array implementation. Outputs the data items in a stack. If the
+// stack is empty, outputs "Empty stack". This operation is intended
+// for testing and debugging purposes only.
+
+{
+    if( isEmpty() ) {
+	    cout << "Empty stack." << endl;
+    }
+    else {
+	    int j;
+	    cout << "Top = " << top << endl;
+	  for ( j = 0 ; j < maxSize ; j++ )
+	    cout << j << "\t";
+	    cout << endl;
+	  for ( j = 0 ; j <= top  ; j++ )
+	  {
+	    if( j == top )
+	    {
+	      cout << '[' << dataItems[j] << ']'<< "\t"; // Identify top
+	    }
+	    else
+	    {
+		    cout << dataItems[j] << "\t";
+	    }
+	}
+	cout << endl;
+    }
+    cout << endl;
+}
 
 #endif		//#ifndef STACKARRAY_H

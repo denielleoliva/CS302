@@ -20,8 +20,6 @@ class Stack {
   public:
     static const int MAX_STACK_SIZE = 8;
 
-    virtual Stack();
-
     virtual ~Stack();
 
     virtual void push(const DataType& newDataItem) throw (logic_error) = 0;

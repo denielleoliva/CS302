@@ -149,4 +149,32 @@ bool StackLinked<DataType>:: isFull() const{
     return !(top==NULL);
 }
 
+template <typename DataType>
+void StackLinked<DataType>::showStructure() const 
+
+// Linked list implementation. Outputs the data elements in a stack.
+// If the stack is empty, outputs "Empty stack". This operation is
+// intended for testing and debugging purposes only.
+
+{
+    if( isEmpty() )
+    {
+	cout << "Empty stack" << endl;
+    }
+    else
+    {
+        cout << "Top\t";
+	for (StackNode* temp = top; temp != 0; temp = temp->next) {
+	    if( temp == top ) {
+		cout << '[' << temp->dataItem << "]\t";
+	    }
+	    else {
+		cout << temp->dataItem << "\t";
+	    }
+	}
+        cout << "Bottom" << endl;
+    }
+
+}
+
 #endif		//#ifndef STACKARRAY_H

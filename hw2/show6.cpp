@@ -1,5 +1,4 @@
 // show6.cpp
-
 //--------------------------------------------------------------------
 
 template <typename DataType>
@@ -37,6 +36,7 @@ void StackArray<DataType>::showStructure() const
 
 //--------------------------------------------------------------------
 
+/*
 template <typename DataType>
 void StackLinked<DataType>::showStructure() const 
 
@@ -54,7 +54,7 @@ void StackLinked<DataType>::showStructure() const
         cout << "Top\t";
 	for (StackNode* temp = top; temp != 0; temp = temp->next) {
 	    if( temp == top ) {
-		cout << '[" << temp->dataItem << "]\t";
+		cout << '[' << temp->dataItem << "]\t";
 	    }
 	    else {
 		cout << temp->dataItem << "\t";
@@ -64,4 +64,4 @@ void StackLinked<DataType>::showStructure() const
     }
 
 }
-
+*/

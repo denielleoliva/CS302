@@ -12,9 +12,9 @@ using namespace std;
 #include "config.h"
 
 #if !LAB6_TEST1
-#  include "StackArray.cpp"
+#  include "StackArray.h"
 #else
-#  include "StackLinked.cpp"
+#  include "StackLinked.h"
 #endif
 
 void print_help()
