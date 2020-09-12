@@ -41,8 +41,6 @@ class StackLinked : public Stack<DataType> {
     class StackNode {
       public:
 	      StackNode(const DataType& nodeData, StackNode* nextPtr){
-          dataItem = nodeData;
-          next = nextPtr;
         }
 
 	      DataType dataItem;
@@ -52,6 +50,11 @@ class StackLinked : public Stack<DataType> {
     StackNode* top;
 };
 
+template <typename DataType>
+StackLinked<DataType>::StackNode::StackNode(const DataType& nodeData, StackNode* nextPtr) :
+  dataItem(nodeData), next(nextPtr){
+
+}
 
 template <typename DataType>
 StackLinked<DataType>::StackLinked(int maxNumber = Stack<DataType>::MAX_STACK_SIZE){
@@ -68,7 +71,7 @@ StackLinked<DataType>::StackLinked(const StackLinked& other){
 
     top = NULL;
 
-    while(top!=NULL){
+    while(top != NULL){
         placeholder = other.top;
 
         for(int i = 0; i<MAX_STACK_SIZE-1; i++){
