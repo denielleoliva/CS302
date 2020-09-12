@@ -40,8 +40,7 @@ class StackLinked : public Stack<DataType> {
 
     class StackNode {
       public:
-	      StackNode(const DataType& nodeData, StackNode* nextPtr){
-        }
+	      StackNode(const DataType& nodeData, StackNode* nextPtr);
 
 	      DataType dataItem;
 	      StackNode* next;
@@ -57,10 +56,10 @@ StackLinked<DataType>::StackNode::StackNode(const DataType& nodeData, StackNode*
 }
 
 template <typename DataType>
-StackLinked<DataType>::StackLinked(int maxNumber = Stack<DataType>::MAX_STACK_SIZE){
+StackLinked<DataType>::StackLinked(int maxNumber){
     top = NULL;
 
-    for(int i = 0; i<MAX_STACK_SIZE; i++){
+    for(int i = 0; i<maxNumber; i++){
         push(NULL);
     }
 }
@@ -74,7 +73,7 @@ StackLinked<DataType>::StackLinked(const StackLinked& other){
     while(top != NULL){
         placeholder = other.top;
 
-        for(int i = 0; i<MAX_STACK_SIZE-1; i++){
+        for(int i = 0; i<other.maxSize-1; i++){
             placeholder = placeholder->next;
         }
 
@@ -95,7 +94,7 @@ StackLinked<DataType>& StackLinked<DataType>::operator=(const StackLinked& other
     while(top!=NULL){
       placeholder = other.top;
 
-      for(int i = 0; i<MAX_STACK_SIZE; i++){
+      for(int i = 0; i<other.maxSize; i++){
         placeholder = placeholder->next;
       }
 
@@ -115,20 +114,19 @@ StackLinked<DataType>::~StackLinked(){
 
 template <typename DataType>
 void StackLinked<DataType>:: push(const DataType& newDataItem) throw(logic_error){
-    if(isEmpty()){
-        top = newDataItem.next;
-    }else{
-        top = new StackNode(newDataItem);
-    }
+    top = new StackNode(newDataItem, top);
 }
 
 template <typename DataType>
 DataType StackLinked<DataType>:: pop() throw (logic_error){
     if(isEmpty()){
-        StackNode temp = top;
-        top = top->next;
-        delete temp;
+        throw logic_error("Stack is empty. Cannot pop() from stack.");
     }
+
+    DataType tmp = top->dataItem;
+    top = top->next;
+
+    return tmp;
 }
 
 template <typename DataType>
