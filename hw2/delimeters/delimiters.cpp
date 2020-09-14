@@ -43,7 +43,12 @@ int main()
             cout << "Invalid" << endl;
     }*/
 
-    std::cout<<"Test case 1: {{<}}> -"<<(delimetersOk("{{<}}>)"))<<std::endl;
+    std::cout<<"Test case 1: {} -";
+    if(delimitersOk("{}")){
+        cout<<" VALID CASE"<<endl;
+    }else{
+        cout<<" INVALID CASE"<<endl;
+    }
 
     return 0;
 }
@@ -58,49 +63,41 @@ int main()
 
 // Insert your delimitersOk function below
 
-bool delimetersOk(const string &expression){
+bool delimitersOk(const string &expression){
     //opening delimeters: [, {, <, (
     //closing delimeters: ], }, >, )
 
     StackLinked<char> inputStack;
+    char temp;
 
-    try{
-        for(int i = 0; i<expression.length(); i++){
-            switch(expression[i]){
-                case '[':
-                case '{':
-                case '<':
-                case '(': inputStack.push(expression[i]);
-                          break;
+    for(int i = 0; expression.length(); i++){
+        switch(expression[i]){
+            case '(': inputStack.push(expression[i]);
+                        break;
+            case '[': inputStack.push(expression[i]);
+                        break;
+            case '{': inputStack.push(expression[i]);
+                        cout<<"here"<<endl;
+                        break;
 
-                case ']': if(inputStack.pop() != '['){
-                            return false;
-                          }
-                          break;
-
-                case '}': if(inputStack.pop() != '{'){
-                            return false;
-                          }
-                          break;
-
-                case '>': if(inputStack.pop() != '<'){
-                            return false;
-                          }
-                          break;
-                          
-                case ')': if(inputStack.pop() != '('){
-                            return false;
-                          }
-                          break;
-            }
+            case ')': 
+                if(inputStack.pop()!= '('){
+                    return false;
+                }
+                break;
+            case '}': 
+                if(inputStack.pop()!= '{'){
+                    return false;
+                }
+                break;
+            case ']':
+                if(inputStack.pop()!= '['){
+                    return false;
+                }
+                break;
         }
-
-        //if the stack is empty then the delimeters all matched
-        return inputStack.isEmpty();
-    }catch(logic_error){
-        return false;
     }
 
-
+    return (inputStack.isEmpty());
 
 }
