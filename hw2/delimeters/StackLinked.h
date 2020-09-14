@@ -57,20 +57,17 @@ StackLinked<DataType>::StackNode::StackNode(const DataType& nodeData, StackNode*
 
 template <typename DataType>
 StackLinked<DataType>::StackLinked(int maxNumber){
-    top = NULL;
+    top = nullptr;
 
-    for(int i = 0; i<maxNumber; i++){
-        push(NULL);
-    }
 }
 
 template <typename DataType>
 StackLinked<DataType>::StackLinked(const StackLinked& other){
     DataType *placeholder;
 
-    top = NULL;
+    top = nullptr;
 
-    while(top != NULL){
+    while(top != nullptr){
         placeholder = other.top;
 
         for(int i = 0; i<other.maxNumber-1; i++){
@@ -89,9 +86,7 @@ StackLinked<DataType>& StackLinked<DataType>::operator=(const StackLinked& other
 
     StackNode *placeholder;
 
-    top = NULL;
-
-    while(top!=NULL){
+    while(top!=nullptr){
       placeholder = other.top;
 
       for(int i = 0; i<this.maxNumber; i++){
@@ -133,7 +128,7 @@ DataType StackLinked<DataType>:: pop() throw (logic_error){
 
 template <typename DataType>
 void StackLinked<DataType>:: clear(){
-    while(top!=NULL){
+    while(top!=nullptr){
         pop();
     }
 }
@@ -141,12 +136,12 @@ void StackLinked<DataType>:: clear(){
 
 template <typename DataType>
 bool StackLinked<DataType>:: isEmpty() const{
-    return top==NULL;
+    return top==nullptr;
 }
 
 template <typename DataType>
 bool StackLinked<DataType>:: isFull() const{
-    return !(top==NULL);
+    return !(top==nullptr);
 }
 
 template <typename DataType>

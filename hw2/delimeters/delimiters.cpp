@@ -50,6 +50,36 @@ int main()
         cout<<" INVALID CASE"<<endl;
     }
 
+
+    std::cout<<"Test case 2: ([{} -";
+    if(delimitersOk("([{}")){
+        cout<<" VALID CASE"<<endl;
+    }else{
+        cout<<" INVALID CASE"<<endl;
+    }
+
+    std::cout<<"Test case 3: ([)] -";
+    if(delimitersOk("([)]")){
+        cout<<" VALID CASE"<<endl;
+    }else{
+        cout<<" INVALID CASE"<<endl;
+    }
+
+    std::cout<<"Test case 4: ({}{)}[() -";
+    if(delimitersOk("({}{)}[()")){
+        cout<<" VALID CASE"<<endl;
+    }else{
+        cout<<" INVALID CASE"<<endl;
+    }
+
+    std::cout<<"Test case 5: (] -";
+    if(delimitersOk("(]")){
+        cout<<" VALID CASE"<<endl;
+    }else{
+        cout<<" INVALID CASE"<<endl;
+    }
+
+
     return 0;
 }
 
@@ -68,22 +98,44 @@ bool delimitersOk(const string &expression){
     //closing delimeters: ], }, >, )
 
     StackLinked<char> inputStack;
-    char temp;
+    
+    try{
+        for(int i = 0; i<expression.length(); i++){
+            switch(expression[i]){
+                case '(':
+                case '{':
+                case '[': inputStack.push(expression[i]);
+                    break;
+                
+                case ')':
+                    if(inputStack.pop()!='('){
+                        return false;
+                    }
+                    break;
+                case '}':
+                    if(inputStack.pop()!='{'){
+                        return false;
+                    }
+                    break;
+                case ']':
+                    if(inputStack.pop()!='['){
+                        return false;
+                    }
+                    break;
 
-    for(int i = 0; expression.length(); i++){
-        if(expression[i]=='(' ||expression[i]=='{' ||expression[i]=='[' ){
-            temp = expression[i];
-            inputStack.push(expression[i]);
-        }else if(expression[i]==')'||expression[i]=='}' ||expression[i]==']' ){
-            if((inputStack.pop()=='(' && temp == ')')||(inputStack.pop()=='{' && temp == '}')
-                ||(inputStack.pop()=='[' && temp == ']')){
-                    return false;
-                }
-
+                
+                
+            }
         }
-        
-    }
 
-    return (inputStack.isEmpty());
+        if(inputStack.isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+
+    }catch(logic_error){
+        return false;
+    }
 
 }

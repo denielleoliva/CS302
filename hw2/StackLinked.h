@@ -73,11 +73,7 @@ StackLinked<DataType>::StackLinked(const StackLinked& other){
     while(top != NULL){
         placeholder = other.top;
 
-<<<<<<< HEAD
-        for(int i = 0; i<other.maxSize-1; i++){
-=======
         for(int i = 0; i<other.maxNumber-1; i++){
->>>>>>> 2ea7a7c4be23eeef301f0b147357479688efd7eb
             placeholder = placeholder->next;
         }
 
@@ -98,11 +94,7 @@ StackLinked<DataType>& StackLinked<DataType>::operator=(const StackLinked& other
     while(top!=NULL){
       placeholder = other.top;
 
-<<<<<<< HEAD
-      for(int i = 0; i<other.maxSize; i++){
-=======
       for(int i = 0; i<this.maxNumber; i++){
->>>>>>> 2ea7a7c4be23eeef301f0b147357479688efd7eb
         placeholder = placeholder->next;
       }
 
@@ -122,25 +114,17 @@ StackLinked<DataType>::~StackLinked(){
 
 template <typename DataType>
 void StackLinked<DataType>:: push(const DataType& newDataItem) throw(logic_error){
-<<<<<<< HEAD
-    top = new StackNode(newDataItem, top);
-=======
     if(isEmpty()){
         throw logic_error("Stack is empty. Cannot push() to empty stack.");
     }else{
         top = new StackNode(newDataItem, top);
     }
->>>>>>> 2ea7a7c4be23eeef301f0b147357479688efd7eb
 }
 
 template <typename DataType>
 DataType StackLinked<DataType>:: pop() throw (logic_error){
     if(isEmpty()){
-<<<<<<< HEAD
         throw logic_error("Stack is empty. Cannot pop() from stack.");
-=======
-        throw logic_error("Stack is empty. Cannot pop() from empty stack.");
->>>>>>> 2ea7a7c4be23eeef301f0b147357479688efd7eb
     }
 
     DataType tmp = top->dataItem;
