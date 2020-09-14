@@ -114,17 +114,15 @@ StackLinked<DataType>::~StackLinked(){
 
 template <typename DataType>
 void StackLinked<DataType>:: push(const DataType& newDataItem) throw(logic_error){
-    if(isEmpty()){
-        throw logic_error("Stack is empty. Cannot push() to empty stack.");
-    }else{
-        top = new StackNode(newDataItem, top);
-    }
+    
+    top = new StackNode(newDataItem, top);
+    
 }
 
 template <typename DataType>
 DataType StackLinked<DataType>:: pop() throw (logic_error){
     if(isEmpty()){
-        throw logic_error("Stack is empty. Cannot pop() from empty stack.");
+        throw logic_error("Stack is empty. Cannot pop to empty stack.");
     }
 
     DataType tmp = top->dataItem;
