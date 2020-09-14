@@ -71,31 +71,17 @@ bool delimitersOk(const string &expression){
     char temp;
 
     for(int i = 0; expression.length(); i++){
-        switch(expression[i]){
-            case '(': inputStack.push(expression[i]);
-                        break;
-            case '[': inputStack.push(expression[i]);
-                        break;
-            case '{': inputStack.push(expression[i]);
-                        cout<<"here"<<endl;
-                        break;
+        if(expression[i]=='(' ||expression[i]=='{' ||expression[i]=='[' ){
+            temp = expression[i];
+            inputStack.push(expression[i]);
+        }else if(expression[i]==')'||expression[i]=='}' ||expression[i]==']' ){
+            if((inputStack.pop()=='(' && temp == ')')||(inputStack.pop()=='{' && temp == '}')
+                ||(inputStack.pop()=='[' && temp == ']')){
+                    return false;
+                }
 
-            case ')': 
-                if(inputStack.pop()!= '('){
-                    return false;
-                }
-                break;
-            case '}': 
-                if(inputStack.pop()!= '{'){
-                    return false;
-                }
-                break;
-            case ']':
-                if(inputStack.pop()!= '['){
-                    return false;
-                }
-                break;
         }
+        
     }
 
     return (inputStack.isEmpty());
