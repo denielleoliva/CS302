@@ -3,6 +3,8 @@
 
 #include "StackLinked.h"
 
+using namespace std;
+
 float applyOperand(const float operandOne, const float operandTwo, char operation){
 
     switch(operation){
@@ -26,8 +28,10 @@ float evaluate(const string input){
     float total;
 
     for(int i = 0; i<input.length(); i++){
-        if(input[i]!='+'||input[i]!='-'||input[i]!='/'||input[i]!='*'){
-            vals.push(input[i]);
+
+        if(input[i]!='+'&&input[i]!='-'&&input[i]!='/'&&input[i]!='*'){
+            vals.push(input[i]-48);
+
         }else{
 
             float first = vals.pop();
@@ -48,6 +52,8 @@ float evaluate(const string input){
 int main(){
 
     cout<<evaluate("10+")<<endl;
+
+    cout<<evaluate("10+42-*")<<endl;
 
     return 0;
 }
