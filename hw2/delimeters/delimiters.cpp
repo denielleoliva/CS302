@@ -58,15 +58,15 @@ int main()
         cout<<" INVALID CASE"<<endl;
     }
 
-    std::cout<<"Test case 3: ([)] -";
-    if(delimitersOk("([)]")){
+    std::cout<<"Test case 3: ([]) -";
+    if(delimitersOk("([])")){
         cout<<" VALID CASE"<<endl;
     }else{
         cout<<" INVALID CASE"<<endl;
     }
 
     std::cout<<"Test case 4: ({}{)}[() -";
-    if(delimitersOk("({}{)}[()")){
+    if(delimitersOk("[{()}{[]}]")){
         cout<<" VALID CASE"<<endl;
     }else{
         cout<<" INVALID CASE"<<endl;
