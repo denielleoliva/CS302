@@ -3,7 +3,7 @@ CXX_FLAGS = -Wall -std=c++11
 
 TARGET = test6
 HEADERS = Stack.h StackArray.h StackLinked.h
-SRCS = test6.cpp 
+SRCS = StackArray.cpp test6.cpp 
 
 OBJECTS := $(patsubst %.cpp,%.o,$(SRCS))
 

@@ -11,10 +11,10 @@ using namespace std;
 
 #include "config.h"
 
-#if !LAB6_TEST1
-#  include "StackArray.h"
+#if LAB6_TEST1
+#  include "StackArray.cpp"
 #else
-#  include "StackLinked.h"
+#  include "StackLinked.cpp"
 #endif
 
 void print_help()
@@ -97,7 +97,7 @@ void test_stack(Stack<DataType>& testStack)
 }
 
 int main() {
-#if !LAB6_TEST1
+#if LAB6_TEST1
     cout << "Testing array implementation" << endl;
     StackArray<char> s1;
     test_stack(s1);
