@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "StackLinked.h"
+#include "StackLinked.cpp"
 
 using namespace std;
 
@@ -35,6 +35,8 @@ float evaluate(const string input){
             input[i]!='*'){
             vals.push(input[i]-48);
 
+        }else if(input[i]==' '){
+            break;
         }else{
 
             float first = vals.pop();
@@ -44,6 +46,8 @@ float evaluate(const string input){
 
             vals.push(total);
         }
+
+        vals.showStructure();
     }
 
     return total;
@@ -54,7 +58,7 @@ float evaluate(const string input){
 
 int main(){
 
-    cout<<evaluate("10+")<<endl;
+    cout<<evaluate("1 0 +")<<endl;
 
     cout<<evaluate("10+42-*")<<endl;
 
