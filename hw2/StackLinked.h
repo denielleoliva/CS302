@@ -21,6 +21,9 @@ class StackLinked : public Stack<DataType> {
 
   public:
 
+    int cnt = 0;
+    int max = Stack<DataType>::MAX_STACK_SIZE;
+
     StackLinked(int maxNumber = Stack<DataType>::MAX_STACK_SIZE);
     StackLinked(const StackLinked& other);
     StackLinked& operator=(const StackLinked& other);
@@ -47,6 +50,8 @@ class StackLinked : public Stack<DataType> {
     };
 
     StackNode* top;
+
+    
 };
 
 

@@ -65,7 +65,6 @@ template <typename DataType>
 void StackLinked<DataType>:: push(const DataType& newDataItem) throw(logic_error){
     
     top = new StackNode(newDataItem, top);
-    cnt++;
     
 }
 
@@ -77,8 +76,6 @@ DataType StackLinked<DataType>:: pop() throw (logic_error){
 
     DataType tmp = top->dataItem;
     top = top->next;
-
-    cnt--;
 
     return tmp;
 }
@@ -98,7 +95,7 @@ bool StackLinked<DataType>:: isEmpty() const{
 
 template <typename DataType>
 bool StackLinked<DataType>:: isFull() const{
-    return cnt==max;
+    return !(top==nullptr);
 }
 
 template <typename DataType>

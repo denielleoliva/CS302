@@ -3,7 +3,7 @@ CXX_FLAGS = -Wall -std=c++11
 
 TARGET = delimiters
 HEADERS = StackLinked.h
-SRCS = delimiters.cpp 
+SRCS = StackLinked.cpp delimiters.cpp 
 
 OBJECTS := $(patsubst %.cpp,%.o,$(SRCS))
 

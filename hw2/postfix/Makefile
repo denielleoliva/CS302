@@ -3,7 +3,7 @@ CXX_FLAGS = -Wall -std=c++11
 
 TARGET = postfix
 HEADERS = StackLinked.h
-SRCS = postfix.cpp 
+SRCS = StackLinked.cpp postfix.cpp 
 
 OBJECTS := $(patsubst %.cpp,%.o,$(SRCS))
 
