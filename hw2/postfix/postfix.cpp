@@ -16,12 +16,12 @@ float applyOperand(const float operandOne, const float operandTwo, char operatio
 
 }
 
-float evaluate(string input){
+float evaluate(const string input){
+
 
     StackLinked<int> vals;
     
     vals.clear();
-
 
     float total;
 
