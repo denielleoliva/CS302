@@ -29,7 +29,10 @@ float evaluate(const string input){
 
     for(int i = 0; i<input.length(); i++){
 
-        if(input[i]!='+'&&input[i]!='-'&&input[i]!='/'&&input[i]!='*'){
+        if(input[i]!='+'&&
+            input[i]!='-'&&
+            input[i]!='/'&&
+            input[i]!='*'){
             vals.push(input[i]-48);
 
         }else{

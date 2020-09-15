@@ -72,7 +72,7 @@ bool StackArray<DataType>::isEmpty() const{
 
 template <typename DataType>
 bool StackArray<DataType>::isFull() const{
-  return top == maxSize -1;
+  return top == maxSize-1;
 }
 
 template <typename DataType>
