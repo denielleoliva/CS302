@@ -8,4 +8,9 @@ delimiter check.
 
 The postfix evaluation portion of the project evaluates a postfix expression
 and return the correct result. This section uses the linked stack 
-implementation
+implementation in order to find the correct result of a postfix expression.
+
+For example, the postfix expression 34+52/* should evaluate to 17.5.
+
+Test cases for this program are in the attached logs.
+

@@ -1,9 +1,9 @@
 #include <iostream>
 
 #if !LAB6_TEST1
-#include "StackLinked.h"  //broken config file
+#include "StackLinked.cpp"  //broken config file
 #else
-#include "StackArray.h"
+#include "StackArray.cpp"
 #endif
 
 //--------------------------------------------------------------------
