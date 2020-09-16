@@ -85,22 +85,19 @@ void StackArray<DataType>::showStructure() const
 {
     if( isEmpty() ) {
 	    cout << "Empty stack." << endl;
-    }
-    else {
+    }else {
 	    int j;
 	    cout << "Top = " << top << endl;
-	  for ( j = 0 ; j < maxSize ; j++ )
-	    cout << j << "\t";
+	    for ( j = 0 ; j < maxSize ; j++ )
+	      cout << j << "\t";
 	    cout << endl;
-	  for ( j = 0 ; j <= top  ; j++ )
-	  {
-	    if( j == top )
+	    for ( j = 0 ; j <= top  ; j++ )
 	    {
-	      cout << '[' << dataItems[j] << ']'<< "\t"; // Identify top
-	    }
-	    else
-	    {
-		    cout << dataItems[j] << "\t";
+        if( j == top )
+        {
+          cout << '[' << dataItems[j] << ']'<< "\t"; // Identify top
+        }else{
+          cout << dataItems[j] << "\t";
 	    }
 	}
 	cout << endl;
