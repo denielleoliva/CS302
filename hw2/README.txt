@@ -32,7 +32,10 @@ create the cpp files that would be attached to the headers.
 When making the implementation for the two methods of stack functionality, I
 figured out that I would want to be able to keep track of how many items were 
 in my stacks. This was easy in the array based implementation, but I was unable
-to fashion a way to do in the linked list based implementation.
+to fashion a way to do in the linked list based implementation. I was also 
+unable to figure out why the stack for the array based implementation would
+display backwards. When the pop function is called, the 0th element would not 
+be the one popped but the highest index would be.
 
 Another problem that I came across was how to use the operations that I would be
 reading from a string. I wasn't sure how to convert a char data type to one that 
