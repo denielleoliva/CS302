@@ -3,16 +3,28 @@
 
 using namespace std;
 
-template<typname DataType>
 class InsertionSort{
 
 public:
 
     InsertionSort(const int maxSize);
 
-    int readFile(const std::string &file);
+    int readFile(const string &filename);
+    bool writeToFile(const string &filename) const;
+    void sort(int *arr, int maxSize);
 
-    void sort(DataType )
+    void show() const;
 
+
+private:
+
+    int *index;
+    int size;
+    int max;
+
+    //largest value
 
 }
+
+
+#endif
