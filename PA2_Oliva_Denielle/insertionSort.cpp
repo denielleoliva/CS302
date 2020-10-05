@@ -49,6 +49,14 @@ void InsertionSort::sort(int *arr, int maxSize){
 
 }
 
+int * InsertionSort::getArr(){
+    return index;
+}
+
+int getSize(){
+    return size;
+}
+
 void InsertionSort::show() const{
     for(int i = 0; i<size; i++){
         cout<<index[i]<<" ";

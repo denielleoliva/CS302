@@ -11,6 +11,9 @@ public:
 
     int readFile(const string &filename);
     bool writeToFile(const string &filename) const;
+
+    int * getArr();
+    int getSize();
     void sort(int *arr, int maxSize);
 
     void show() const;
@@ -24,7 +27,7 @@ private:
 
     //largest value
 
-}
+};
 
 
 #endif
