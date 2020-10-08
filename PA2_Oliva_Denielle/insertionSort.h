@@ -12,9 +12,8 @@ public:
     int readFile(const string &filename);
     bool writeToFile(const string &filename) const;
 
-    int * getArr();
-    int getSize();
-    void sort(int *arr, int maxSize);
+    
+    void sort(int &comparisons, int &swaps);
 
     void show() const;
 

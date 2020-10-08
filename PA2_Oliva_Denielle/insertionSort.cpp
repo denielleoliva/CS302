@@ -7,54 +7,55 @@
 
 using namespace std;
 
-InsertionSort::InsertionSort(const int maxSize):size(0),
+InsertionSort::InsertionSort(const int maxSize):size(maxSize),
     max(maxSize){
         index = new int[maxSize];
 }
 
 int InsertionSort::readFile(const string &filename){
-    ifstream file;
+    std::ifstream file;
+    string line;
+    int cnt = 0;
 
     file.open(filename);
 
-    int cnt = 0;
     while(file && cnt<size){
         file>>index[cnt];
         cnt++;
-        size++;
     }
 
     return cnt;
 }
 
 bool InsertionSort::writeToFile(const string &filename) const{
+    ofstream resultFile;
+
+    resultFile.open(filename);
+
+    for(int i = 0; i<size;i++){
+        resultFile<<index[i];
+        resultFile<<endl;
+    }
+
     return false;
 }
 
-void InsertionSort::sort(int *arr, int maxSize){
-    int compare;
-    int temp;
+void InsertionSort::sort(int &comparisons, int &swaps){
+    int base, cnt;
 
-    for(int i = 1; i<maxSize; i++){
-        compare = arr[i];
-        temp = i;
+    for(int i = 1; i<size; i++){
+        base = index[i];
+        cnt = i - 1;
 
-        while(temp>0 && arr[temp-1]>compare){
-            arr[temp] = arr[temp-1];
-            temp--;
+        while(cnt>=0 && index[cnt]>base){
+            comparisons++;
+            swap(index[cnt+1],index[cnt]);
+            swaps++;
         }
 
-        arr[temp] = compare;
+        index[cnt+1] = base;
     }
 
-}
-
-int * InsertionSort::getArr(){
-    return index;
-}
-
-int getSize(){
-    return size;
 }
 
 void InsertionSort::show() const{
