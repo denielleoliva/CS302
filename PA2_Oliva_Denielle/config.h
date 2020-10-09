@@ -1,3 +1,3 @@
 //use to switch between insertion sort and merge sort
 
-#define SORT_TEST	1	//use 0 for insertion and 1 for merge
+#define SORT_TEST	0	//use 1 for insertion and 0 for merge
