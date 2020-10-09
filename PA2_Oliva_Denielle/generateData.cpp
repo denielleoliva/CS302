@@ -24,7 +24,7 @@ int main(){
     
     ofstream outFile;
 
-    outFile.open("testFile_1000.txt");
+    outFile.open("data/testFile_1000.txt");
 
     cnt = 1000;
 
@@ -46,7 +46,7 @@ int main(){
 
     outFile.close();
 
-    outFile.open("testFile_10000.txt");
+    outFile.open("data/testFile_10000.txt");
 
     cnt = 10000;
 
@@ -67,7 +67,7 @@ int main(){
     outFile.close();
 
 
-    outFile.open("testFile_100000.txt");
+    outFile.open("data/testFile_100000.txt");
 
     cnt = 100000;
 

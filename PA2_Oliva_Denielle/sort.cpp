@@ -7,6 +7,7 @@
 using namespace std;
 
 int main(){
+
     
     int comparisons = 0;
     int swaps = 0;
