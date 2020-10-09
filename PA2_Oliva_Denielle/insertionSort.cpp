@@ -7,19 +7,17 @@
 
 using namespace std;
 
-InsertionSort::InsertionSort(const int maxSize):size(maxSize),
-    max(maxSize){
+InsertionSort::InsertionSort(const int maxSize): max(maxSize){
         index = new int[maxSize];
 }
 
 int InsertionSort::readFile(const string &filename){
     std::ifstream file;
-    string line;
     int cnt = 0;
 
     file.open(filename);
 
-    while(file && cnt<size){
+    while(file && cnt<max){
         file>>index[cnt];
         cnt++;
     }
@@ -32,7 +30,7 @@ bool InsertionSort::writeToFile(const string &filename) const{
 
     resultFile.open(filename);
 
-    for(int i = 0; i<size;i++){
+    for(int i = 0; i<max;i++){
         resultFile<<index[i];
         resultFile<<endl;
     }
@@ -43,7 +41,7 @@ bool InsertionSort::writeToFile(const string &filename) const{
 void InsertionSort::sort(int &comparisons, int &swaps){
     int base, cnt;
 
-    for(int i = 1; i<size; i++){
+    for(int i = 1; i<max; i++){
         base = index[i];
         cnt = i;
 
@@ -62,7 +60,7 @@ void InsertionSort::sort(int &comparisons, int &swaps){
 }
 
 void InsertionSort::show() const{
-    for(int i = 0; i<size; i++){
+    for(int i = 0; i<max; i++){
         cout<<index[i]<<" ";
     }
     cout<<endl;

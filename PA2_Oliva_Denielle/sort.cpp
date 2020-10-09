@@ -1,93 +1,159 @@
 #include <iostream>
 #include <chrono>
 
-#include "config.h"
+#include "insertionSort.h"
+#include "quickSort.h"
 
-#if SORT_TEST
-#  include "insertionSort.h"
-#else
-#  include "mergeSort.h"
-#endif
+using namespace std;
 
 int main(){
-    #if SORT_TEST
-        int comparisons = 0;
-        int swaps = 0;
+    
+    int comparisons = 0;
+    int swaps = 0;
 
-        cout<<"1000 SORT"<<endl<<endl;
+    cout<<"**********1000 SORT**********"<<endl<<endl;
 
-        InsertionSort is(1000);
-        is.readFile("testFile_1000.txt");
+    cout<<"INSERTION SORT"<<endl<<endl;
+    InsertionSort is(1000);
+    is.readFile("data/testFile_1000.txt");
 
-        auto start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now();
 
-        is.sort(comparisons, swaps);
+    is.sort(comparisons, swaps);
 
-        auto end = std::chrono::high_resolution_clock::now();
-        chrono::duration<double> difference = end - start;
+    auto end = std::chrono::high_resolution_clock::now();
+    chrono::duration<double> difference = end - start;
 
-        //is.show();
+    is.writeToFile("data/[INSERTION]resultFile_1000.txt");
 
-        is.writeToFile("resultFile_1000.txt");
+    cout<<"SECONDS: "<<difference.count()<<endl;
+    cout<<"COMPARISONS: "<<comparisons<<endl;
+    cout<<"SWAPS: "<<swaps<<endl;
 
-        cout<<"SECONDS: "<<difference.count()<<endl;
-        cout<<"COMPARISONS: "<<comparisons<<endl;
-        cout<<"SWAPS: "<<swaps<<endl;
+    //--------------------------------------------------------
 
-        //10000 SORT
+    cout<<endl<<"QUICK SORT"<<endl<<endl;
 
-        cout<<endl<<endl;
-        cout<<"10000 SORT"<<endl<<endl;
+    comparisons = 0;
+    swaps = 0;
 
-        InsertionSort isSecond(10000);
-        isSecond.readFile("testFile_10000.txt");
+    QuickSort qsFirst(1000);
+    qsFirst.readFile("data/testFile_1000.txt");
 
-        comparisons = 0;
-        swaps = 0;
+    start = std::chrono::high_resolution_clock::now();
 
-        start = std::chrono::high_resolution_clock::now();
+    qsFirst.sort(qsFirst.getArr(), 0,
+        qsFirst.getEnd(), comparisons, swaps);
 
-        isSecond.sort(comparisons, swaps);
+    end = std::chrono::high_resolution_clock::now();
+    difference = end - start;
 
-        end = std::chrono::high_resolution_clock::now();
-        difference = end - start;
+    qsFirst.writeFile("data/[QUICK]resultFile_1000.txt");
 
-        //is.show();
+    cout<<"SECONDS: "<<difference.count()<<endl;
+    cout<<"COMPARISONS: "<<comparisons<<endl;
+    cout<<"SWAPS: "<<swaps<<endl;
 
-        isSecond.writeToFile("resultFile_10000.txt");
+    //10000 SORT-----------------------------------------------
 
-        cout<<"SECONDS: "<<difference.count()<<endl;
-        cout<<"COMPARISONS: "<<comparisons<<endl;
-        cout<<"SWAPS: "<<swaps<<endl;
+    cout<<endl<<endl;
+    cout<<"**********10000 SORT**********"<<endl<<endl;
 
-        //100000 SORT
+    cout<<"INSERTION SORT"<<endl<<endl;
 
-        cout<<endl<<endl;
-        cout<<"100000 SORT"<<endl<<endl;
+    InsertionSort isSecond(10000);
+    isSecond.readFile("data/testFile_10000.txt");
 
-        InsertionSort isThird(10000);
-        isThird.readFile("testFile_100000.txt");
+    comparisons = 0;
+    swaps = 0;
 
-        comparisons = 0;
-        swaps = 0;
+    start = std::chrono::high_resolution_clock::now();
 
-        start = std::chrono::high_resolution_clock::now();
+    isSecond.sort(comparisons, swaps);
 
-        isThird.sort(comparisons, swaps);
+    end = std::chrono::high_resolution_clock::now();
+    difference = end - start;
 
-        end = std::chrono::high_resolution_clock::now();
-        difference = end - start;
+    isSecond.writeToFile("data/[INSERTION]resultFile_10000.txt");
 
-        //is.show();
+    cout<<"SECONDS: "<<difference.count()<<endl;
+    cout<<"COMPARISONS: "<<comparisons<<endl;
+    cout<<"SWAPS: "<<swaps<<endl;
 
-        isThird.writeToFile("resultFile_10000.txt");
+    //--------------------------------------------------------
 
-        cout<<"SECONDS: "<<difference.count()<<endl;
-        cout<<"COMPARISONS: "<<comparisons<<endl;
-        cout<<"SWAPS: "<<swaps<<endl;
+    cout<<endl<<"QUICK SORT"<<endl<<endl;
 
-    #else
+    comparisons = 0;
+    swaps = 0;
 
-    #endif
+    QuickSort qsSecond(10000);
+    qsSecond.readFile("data/testFile_10000.txt");
+
+    start = std::chrono::high_resolution_clock::now();
+
+    qsSecond.sort(qsSecond.getArr(), 0,
+        qsSecond.getEnd(), comparisons, swaps);
+
+    end = std::chrono::high_resolution_clock::now();
+    difference = end - start;
+
+    qsSecond.writeFile("data/[QUICK]resultFile_10000.txt");
+
+    cout<<"SECONDS: "<<difference.count()<<endl;
+    cout<<"COMPARISONS: "<<comparisons<<endl;
+    cout<<"SWAPS: "<<swaps<<endl;
+
+    //100000 SORT-------------------------------------------
+
+    cout<<endl<<endl;
+    cout<<"**********100000 SORT**********"<<endl<<endl;
+
+    cout<<"INSERTION SORT"<<endl<<endl;
+    InsertionSort isThird(10000);
+    isThird.readFile("data/testFile_10000.txt");
+
+    comparisons = 0;
+    swaps = 0;
+
+    start = std::chrono::high_resolution_clock::now();
+
+    isThird.sort(comparisons, swaps);
+
+    end = std::chrono::high_resolution_clock::now();
+    difference = end - start;
+
+
+    isThird.writeToFile("data/[INSERTION]resultFile_10000.txt");
+
+    cout<<"SECONDS: "<<difference.count()<<endl;
+    cout<<"COMPARISONS: "<<comparisons<<endl;
+    cout<<"SWAPS: "<<swaps<<endl;
+
+    //--------------------------------------------------------
+
+    cout<<endl<<"QUICK SORT"<<endl<<endl;
+
+    comparisons = 0;
+    swaps = 0;
+
+    QuickSort qsThird(100000);
+    qsThird.readFile("data/testFile_100000.txt");
+
+    start = std::chrono::high_resolution_clock::now();
+
+    qsThird.sort(qsThird.getArr(), 0,
+        qsThird.getEnd(), comparisons, swaps);
+
+    end = std::chrono::high_resolution_clock::now();
+    difference = end - start;
+
+    qsThird.writeFile("data/[QUICK]resultFile_100000.txt");
+
+    cout<<"SECONDS: "<<difference.count()<<endl;
+    cout<<"COMPARISONS: "<<comparisons<<endl;
+    cout<<"SWAPS: "<<swaps<<endl;
+
+    
 
 }
