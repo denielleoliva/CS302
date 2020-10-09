@@ -26,7 +26,7 @@ int main(){
 
     outFile.open("testFile_1000.txt");
 
-    cnt = 10;
+    cnt = 1000;
 
     cout<<"***Random Number Generator***"<<endl<<endl;
 

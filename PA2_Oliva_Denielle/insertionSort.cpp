@@ -45,15 +45,18 @@ void InsertionSort::sort(int &comparisons, int &swaps){
 
     for(int i = 1; i<size; i++){
         base = index[i];
-        cnt = i - 1;
+        cnt = i;
 
-        while(cnt>=0 && index[cnt]>base){
+        comparisons++;
+
+        while(cnt>0 && index[cnt-1]>base){
             comparisons++;
-            swap(index[cnt+1],index[cnt]);
+            swap(index[cnt-1],index[cnt]);
+            cnt--;
             swaps++;
         }
 
-        index[cnt+1] = base;
+        index[cnt] = base;
     }
 
 }
