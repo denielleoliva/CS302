@@ -52,24 +52,24 @@ classBinarySearchTree : publicBinaryNodeTree<ItemType>{
     //------------------------------------------------------------
     // Public Methods Section.
     //------------------------------------------------------------
-    boolisEmpty() const;
-    intgetHeight() const;
-    intgetNumberOfNodes() const;
+    bool isEmpty() const;
+    int getHeight() const;
+    int getNumberOfNodes() const;
     ItemType getRootData() const throw(PrecondViolatedExcept);
-    voidsetRootData(constItemType& newData);
+    void setRootData(constItemType& newData);
     
-    booladd(constItemType& newEntry);
+    bool add(constItemType& newEntry);
 
     boolremove(constItemType& target);
-    voidclear();
+    void clear();
     ItemType getEntry(constItemType& anEntry) const throw(NotFoundException);
     bool contains(constItemType& anEntry) const;
     //------------------------------------------------------------
     // Public Traversals Section.
     //------------------------------------------------------------
     void preorderTraverse(voidvisit(ItemType&)) const;
-    voidinorderTraverse(voidvisit(ItemType&)) const;
-    voidpostorderTraverse(voidvisit(ItemType&)) const;
+    void inorderTraverse(voidvisit(ItemType&)) const;
+    void postorderTraverse(voidvisit(ItemType&)) const;
     //------------------------------------------------------------
     // Overloaded Operator Section.
     //------------------------------------------------------------

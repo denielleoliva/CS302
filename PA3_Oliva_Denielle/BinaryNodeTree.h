@@ -2,7 +2,6 @@
 #define BINARY_NODE_TREE_
 
 #include "BinaryNode.h"
-#include "BinaryNode.h"
 #include "PrecondViolatedExcept.h"
 #include "NotFoundException.h"
 
