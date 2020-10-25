@@ -45,8 +45,8 @@ class BinaryNodeTree: public BinaryTreeInterface<ItemType>{
     public: 
         // CONSTRUCTOR AND DESTRUCTOR SECTION
         BinaryNodeTree();
-        BinaryNodeTree(constItemType& rootItem);
-        BinaryNodeTree(constItemType& rootItem,
+        BinaryNodeTree(const ItemType& rootItem);
+        BinaryNodeTree(const ItemType& rootItem,
                         const std::shared_ptr<BinaryNodeTree<ItemType>> leftTreePtr,
                         const std::shared_ptr<BinaryNodeTree<ItemType>> rightTreePtr);
         BinaryNodeTree(const std::shared_ptr<BinaryNodeTree<ItemType>>& tree);
@@ -77,43 +77,4 @@ class BinaryNodeTree: public BinaryTreeInterface<ItemType>{
 #include “BinaryNodeTree.cpp”
 #endif
 
-template<class ItemType>
-BinaryNodeTree<ItemType>::BinaryNodeTree() : rootPtr(nullptr){
-
-} // end default constructor
-template<class ItemType>
-BinaryNodeTree<ItemType>::BinaryNodeTree(const ItemType& rootItem): 
-                            rootPtr(std::make_shared<BinaryNode<ItemType>>(rootItem, nullptr, nullptr)){
-
-} // end constructor
-
-
-template<class ItemType>
-BinaryNodeTree<ItemType>:: BinaryNodeTree(const ItemType& rootItem, 
-                                            const std::shared_ptr<BinaryNodeTree<ItemType>> leftTreePtr,
-                                            const std::shared_ptr<BinaryNodeTree<ItemType>> rightTreePtr): 
-                                rootPtr(std::make_shared<BinaryNode<ItemType>>(rootItem, 
-                                                                                copyTree(leftTreePtr->rootPtr),
-                                                                                copyTree(rightTreePtr->rootPtr)){
-                        
-} // end constructor
-
-template<class ItemType>
-BinaryNodeTree<ItemType>:: BinaryNodeTree(constItemType& rootItem, 
-                                            const std::shared_ptr<BinaryNodeTree<ItemType>> leftTreePtr,
-                                            const std::shared_ptr<BinaryNodeTree<ItemType>> rightTreePtr): 
-                                    rootPtr(std::make_shared<BinaryNode<ItemType>>(rootItem, 
-                                                                                    copyTree(leftTreePtr->rootPtr),
-                                                                                    copyTree(rightTreePtr->rootPtr)){
-
-} // end constructor
- 
-template<class ItemType>
-BinaryNodeTree<ItemType>:: BinaryNodeTree(const ItemType& rootItem, 
-                                            const std::shared_ptr<BinaryNodeTree<ItemType>> leftTreePtr,
-                                            const std::shared_ptr<BinaryNodeTree<ItemType>> rightTreePtr): 
-                                    rootPtr(std::make_shared<BinaryNode<ItemType>>(rootItem, 
-                                                                                    copyTree(leftTreePtr->rootPtr),
-                                                                                    copyTree(rightTreePtr->rootPtr)){
-} // end constructor
 
