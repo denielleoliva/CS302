@@ -11,7 +11,9 @@
 template<class ItemType>
 class BinarySearchTree : public BinaryNodeTree<ItemType>{
     
-    private:std::shared_ptr<BinaryNode<ItemType>> rootPtr;
+    private:
+        std::shared_ptr<BinaryNode<ItemType>> rootPtr;
+
     protected:
     //------------------------------------------------------------
     //    Protected Utility Methods Section:
@@ -19,26 +21,26 @@ class BinarySearchTree : public BinaryNodeTree<ItemType>{
     //------------------------------------------------------------
     // Places a given new node at its proper position in this binary
     // search tree.
-    autoplaceNode(std::shared_ptr<BinaryNode<ItemType>> subTreePtr,
+    auto placeNode(std::shared_ptr<BinaryNode<ItemType>> subTreePtr,
                   std::shared_ptr<BinaryNode<ItemType>> newNode);
     
     // Removes the given target value from the tree whilemaintaining a
     // binary search tree.
-    autoremoveValue(std::shared_ptr<BinaryNode<ItemType>> subTreePtr,
+    auto removeValue(std::shared_ptr<BinaryNode<ItemType>> subTreePtr,
                     constItemType target,
                     bool& isSuccessful) override;
     // Removes a given node from a tree while maintaining a binary search tree.
-    autoremoveNode(std::shared_ptr<BinaryNode<ItemType>> nodePtr);
+    auto removeNode(std::shared_ptr<BinaryNode<ItemType>> nodePtr);
     // Removes the leftmost node in the left subtree of the node
     // pointed to by nodePtr.
     // Sets inorderSuccessor to the value in this node.
     // Returns a pointer to the revised subtree.
-    autoremoveLeftmostNode(std::shared_ptr<BinaryNode<ItemType>>subTreePtr,
+    auto removeLeftmostNode(std::shared_ptr<BinaryNode<ItemType>>subTreePtr,
                            ItemType& inorderSuccessor);
     
     // Returns a pointer to the node containing the given value,
     // or nullptr if not found.
-    autofindNode(std::shared_ptr<BinaryNode<ItemType>> treePtr,
+    auto findNode(std::shared_ptr<BinaryNode<ItemType>> treePtr,
                 constItemType& target) const;
 
     public:
@@ -46,8 +48,8 @@ class BinarySearchTree : public BinaryNodeTree<ItemType>{
     // Constructor and Destructor Section.
     //------------------------------------------------------------
     BinarySearchTree();
-    BinarySearchTree(constItemType& rootItem);
-    BinarySearchTree(constBinarySearchTree<ItemType>& tree);
+    BinarySearchTree(const ItemType& rootItem);
+    BinarySearchTree(const BinarySearchTree<ItemType>& tree);
     virtual~BinarySearchTree();
     //------------------------------------------------------------
     // Public Methods Section.
@@ -56,20 +58,20 @@ class BinarySearchTree : public BinaryNodeTree<ItemType>{
     int getHeight() const;
     int getNumberOfNodes() const;
     ItemType getRootData() const throw(PrecondViolatedExcept);
-    void setRootData(constItemType& newData);
+    void setRootData(const ItemType& newData);
     
-    bool add(constItemType& newEntry);
+    bool add(const ItemType& newEntry);
 
-    boolremove(constItemType& target);
+    bool remove(const ItemType& target);
     void clear();
-    ItemType getEntry(constItemType& anEntry) const throw(NotFoundException);
-    bool contains(constItemType& anEntry) const;
+    ItemType getEntry(const ItemType& anEntry) const throw(NotFoundException);
+    bool contains(const ItemType& anEntry) const;
     //------------------------------------------------------------
     // Public Traversals Section.
     //------------------------------------------------------------
-    void preorderTraverse(voidvisit(ItemType&)) const;
-    void inorderTraverse(voidvisit(ItemType&)) const;
-    void postorderTraverse(voidvisit(ItemType&)) const;
+    void preorderTraverse(void visit(ItemType&)) const;
+    void inorderTraverse(void visit(ItemType&)) const;
+    void postorderTraverse(void visit(ItemType&)) const;
     //------------------------------------------------------------
     // Overloaded Operator Section.
     //------------------------------------------------------------
@@ -78,5 +80,5 @@ class BinarySearchTree : public BinaryNodeTree<ItemType>{
     }; // end BinarySearchTree
     
     
-#include "BinarySearchTree.cpp"
+//#include "BinarySearchTree.cpp"
 #endif
