@@ -8,8 +8,8 @@
 #include "PrecondViolatedExcept.h"
 #include <memory>
 
-template<classItemType>
-classBinarySearchTree : publicBinaryNodeTree<ItemType>{
+template<class ItemType>
+class BinarySearchTree : public BinaryNodeTree<ItemType>{
     
     private:std::shared_ptr<BinaryNode<ItemType>> rootPtr;
     protected:
