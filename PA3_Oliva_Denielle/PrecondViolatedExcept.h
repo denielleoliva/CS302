@@ -1,4 +1,4 @@
-#ifndef PRECOND_VIOLATED_EXCEPT__
+#ifndef PRECOND_VIOLATED_EXCEPT_
 #define PRECOND_VIOLATED_EXCEPT_
 
 #include <stdexcept>

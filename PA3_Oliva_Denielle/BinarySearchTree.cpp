@@ -65,6 +65,7 @@ bool BinarySearchTree<ItemType>::remove(const ItemType& target){
 
 }
 
+//this is wrong come back to this when you know how to do thing
 template<class ItemType>
 void BinarySearchTree<ItemType>::clear(){
     while(rootPtr!=nullptr){
@@ -72,7 +73,8 @@ void BinarySearchTree<ItemType>::clear(){
     }
 }
 
+
 template<class ItemType>
 ItemType BinarySearchTree<ItemType>::getEntry(const ItemType& anEntry) const throw(NotFoundException){
-    
+
 }

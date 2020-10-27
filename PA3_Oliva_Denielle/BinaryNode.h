@@ -5,7 +5,7 @@
 #include "PrecondViolatedExcept.h"
 
 template<class ItemType>
-class BinaryNode: public BinaryTreeInterface<itemType>{
+class BinaryNode{
     public:
         BinaryNode(); 
         BinaryNode(const ItemType &source);

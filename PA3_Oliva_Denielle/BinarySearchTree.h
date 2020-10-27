@@ -27,7 +27,7 @@ class BinarySearchTree : public BinaryNodeTree<ItemType>{
     // Removes the given target value from the tree whilemaintaining a
     // binary search tree.
     auto removeValue(std::shared_ptr<BinaryNode<ItemType>> subTreePtr,
-                    constItemType target,
+                    const ItemType target,
                     bool& isSuccessful) override;
     // Removes a given node from a tree while maintaining a binary search tree.
     auto removeNode(std::shared_ptr<BinaryNode<ItemType>> nodePtr);
@@ -41,7 +41,7 @@ class BinarySearchTree : public BinaryNodeTree<ItemType>{
     // Returns a pointer to the node containing the given value,
     // or nullptr if not found.
     auto findNode(std::shared_ptr<BinaryNode<ItemType>> treePtr,
-                constItemType& target) const;
+                const ItemType& target) const;
 
     public:
     //------------------------------------------------------------
@@ -76,7 +76,7 @@ class BinarySearchTree : public BinaryNodeTree<ItemType>{
     // Overloaded Operator Section.
     //------------------------------------------------------------
     BinarySearchTree<ItemType>&
-    operator=(constBinarySearchTree<ItemType>& rightHandSide);
+    operator=(const BinarySearchTree<ItemType>& rightHandSide);
     }; // end BinarySearchTree
     
     
