@@ -86,5 +86,5 @@ bool BinarySearchTree<ItemType>::contains(const ItemType& anEntry) const{
 
 template<class ItemType>
 void BinarySearchTree<ItemType>::preorderTraverse(void visit(ItemType&)) const{
-    if()
+    
 }
