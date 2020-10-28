@@ -78,3 +78,13 @@ template<class ItemType>
 ItemType BinarySearchTree<ItemType>::getEntry(const ItemType& anEntry) const throw(NotFoundException){
 
 }
+
+template<class ItemType>
+bool BinarySearchTree<ItemType>::contains(const ItemType& anEntry) const{
+
+}
+
+template<class ItemType>
+void BinarySearchTree<ItemType>::preorderTraverse(void visit(ItemType&)) const{
+    if()
+}
