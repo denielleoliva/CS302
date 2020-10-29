@@ -91,10 +91,11 @@ ItemType* BinaryNodeTree<ItemType>::removeValue(std::shared_ptr<BinaryNode<ItemT
 	return subTreePtr;
 }   
 
+/*
 template<class ItemType>
 auto BinaryNodeTree<ItemType>::moveValuesUpTree(std::shared_ptr<BinaryNode<ItemType>> subTreePtr){
 	
-}
+}*/
 
 template<class ItemType>
 auto BinaryNodeTree<ItemType>::copyTree(const std::shared_ptr<BinaryNode<ItemType>> oldTreeRootPtr) const{
@@ -120,6 +121,17 @@ void BinaryNodeTree<ItemType>::destroyTree(std::shared_ptr<BinaryNode<ItemType>>
 	}
 }
 
+
+template<class ItemType>
+void BinaryNodeTree<ItemType>::preorder(void visit(ItemType&), std::shared_ptr<BinaryNode<ItemType>> treePtr) const{
+	if(treePtr!=nullptr){
+		ItemType theItem = treePtr->getNode();
+		visit(theItem);
+		preorder(visit, treePtr->getLeftChild());
+		preorder(visit, treePtr->getRightChild());
+	}
+}
+
 template<class ItemType>
 void BinaryNodeTree<ItemType>::inorder(void visit(ItemType&), std::shared_ptr<BinaryNode<ItemType>> treePtr) const{
 	if(treePtr!=nullptr){
@@ -130,9 +142,95 @@ void BinaryNodeTree<ItemType>::inorder(void visit(ItemType&), std::shared_ptr<Bi
 	}
 }
 
+
+template<class ItemType>
+void BinaryNodeTree<ItemType>::postorder(void visit(ItemType&), std::shared_ptr<BinaryNode<ItemType>> treePtr) const{
+	if(treePtr!=nullptr){
+		postorder(visit, treePtr->getLeftChild());
+		postorder(visit, treePtr->getRightChild());
+		ItemType theItem = treePtr->getNode();
+		visit(theItem);
+	}
+}
+
+
+template<class ItemType>
+bool BinaryNodeTree<ItemType>::isEmpty() const{
+	return rootPtr==nullptr;
+}
+
+
+template<class ItemType>
+int BinaryNodeTree<ItemType>::getHeight() const{
+	return getHeightHelper(this->rootPtr);
+}
+
+
+template<class ItemType>
+int BinaryNodeTree<ItemType>::getNumberOfNodes() const{
+	return getNumberOfNodesHelper(this->rootPtr);
+}
+
+
+template<class ItemType>
+ItemType BinaryNodeTree<ItemType>::getRootData() const throw(PrecondViolatedExcept){
+	return this->getNode();
+}
+
 template<class ItemType>
 bool BinaryNodeTree<ItemType>::add(const ItemType& newData){
 	auto newPtr = std::make_shared<BinaryNode<ItemType>>(newData);
 	rootPtr = balanceAdd(rootPtr, newPtr);
 	return true;
 }
+
+
+template<class ItemType>
+bool BinaryNodeTree<ItemType>::remove(const ItemType& data){
+	bool isRemoved;
+	this->removeValue(rootPtr, data, isRemoved);
+
+	return isRemoved;
+}
+
+
+template<class ItemType>
+void BinaryNodeTree<ItemType>::clear(){
+	this->rootPtr=nullptr;
+}
+
+/*
+template<class ItemType>
+ItemType BinaryNodeTree<ItemType>::getEntry(const ItemType& anEntry) const throw(NotFoundException){
+
+}*/
+
+/*
+template<class ItemType>
+bool BinaryNodeTree<ItemType>::contains(const ItemType& anEntry) const{
+
+}*/
+
+
+template<class ItemType>
+void BinaryNodeTree<ItemType>::preorderTraverse(void visit(ItemType&)) const{
+	preorder(visit);
+}
+
+
+template<class ItemType>
+void BinaryNodeTree<ItemType>::inorderTraverse(void visit(ItemType&)) const{
+	inorder(visit);
+}
+
+
+template<class ItemType>
+void BinaryNodeTree<ItemType>::postorderTraverse(void visit(ItemType&)) const{
+	postorder(visit);
+}
+
+/*
+template<class ItemType>
+BinaryNodeTree& BinaryNodeTree<ItemType>::operator=(const BinaryNodeTree& rightHandSide){
+
+}*/

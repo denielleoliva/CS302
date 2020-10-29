@@ -44,7 +44,6 @@ class BinaryNodeTree : public BinaryTreeInterface<ItemType>{
         void destroyTree(std::shared_ptr<BinaryNode<ItemType>> subTreePtr);
 
         void preorder(void visit(ItemType&), std::shared_ptr<BinaryNode<ItemType>> treePtr) const;
-        //
         void inorder(void visit(ItemType&), std::shared_ptr<BinaryNode<ItemType>> treePtr) const;
         void postorder(void visit(ItemType&), std::shared_ptr<BinaryNode<ItemType>> treePtr) const;
 

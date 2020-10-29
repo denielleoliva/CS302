@@ -13,7 +13,6 @@ BinarySearchTree<ItemType>::BinarySearchTree(const ItemType& rootItem): rootPtr(
 
 }
 
-//maybe this works
 template<class ItemType>
 BinarySearchTree<ItemType>::BinarySearchTree(const BinarySearchTree<ItemType>& tree) :
                                                                         rootPtr(tree->rootPtr){
@@ -22,35 +21,123 @@ BinarySearchTree<ItemType>::BinarySearchTree(const BinarySearchTree<ItemType>& t
 
 template<class ItemType>
 BinarySearchTree<ItemType>::~BinarySearchTree(){
+    rootPtr=nullptr;
+}
+
+template<class ItemType>
+auto BinarySearchTree<ItemType>::placeNode(std::shared_ptr<BinaryNode<ItemType>> subTreePtr,
+                  std::shared_ptr<BinaryNode<ItemType>> newNode){
+    std::shared_ptr<BinaryNode<ItemType>>* tmp;
+
+    if(subTreePtr==nullptr){
+        return newNode;
+    }else if(subTreePtr->getNode()>newNode->getNode()){
+        tmp = placeNode(subTreePtr->getLeftChild(), newNode);
+        subTreePtr->setLeftChild(tmp);
+    }else{
+        tmp = placeNode(subTreePtr->getRightChild(), newNode);
+        subTreePtr->setRightChild(tmp);
+    }
+
+    return subTreePtr;
+}
+
+
+template<class ItemType>
+auto BinarySearchTree<ItemType>::removeValue(std::shared_ptr<BinaryNode<ItemType>> subTreePtr,
+                    const ItemType target,
+                    bool& isSuccessful){
+    std::shared_ptr<BinaryNode<ItemType>>* tmp;
+
+    if(subTreePtr==nullptr){
+        isSuccessful=false;
+    }else if(subTreePtr->getNode()==target){
+        subTreePtr=removeNode(subTreePtr);
+        isSuccessful=true;
+    }else if(subTreePtr->getNode()>target){
+        tmp = removeValue(subTreePtr->getLeftChild(), target, isSuccessful);
+        subTreePtr->setLeftChild(tmp);
+    }else{
+        tmp = removeValue(subTreePtr->getRightChild(), target, isSuccessful);
+        subTreePtr->setRightChild(tmp);
+    }
+
+    return subTreePtr;
 
 }
+
+
+template<class ItemType>
+auto BinarySearchTree<ItemType>::removeNode(std::shared_ptr<BinaryNode<ItemType>> nodePtr){
+    std::shared_ptr<BinaryNode<ItemType>>* tmp;
+
+    int newVal = 0;
+
+    if(rootPtr->isLeaf()){
+        rootPtr=nullptr;
+        return rootPtr;
+    }else if(rootPtr->getLeftChild()!=nullptr&&rootPtr->getRightChild()!=nullptr){
+        return rootPtr->getLeftChild();
+    }else if(rootPtr->getRightChild()!=nullptr&&rootPtr->getLeftChild()!=nullptr){
+        return rootPtr->getRightChild();
+    }else{
+        tmp = removeLeftmostNode(rootPtr->getRightChild(), newVal);
+        rootPtr->setRightChild(tmp);
+        rootPtr->setNode(newVal);
+        return rootPtr;
+    }
+}
+
+
+template<class ItemType>
+auto BinarySearchTree<ItemType>::removeLeftmostNode(std::shared_ptr<BinaryNode<ItemType>>subTreePtr,
+                           ItemType& inorderSuccessor){
+    std::shared_ptr<BinaryNode<ItemType>>* tmp;
+
+    if(treePtr->getLeftChild()==nullptr){
+        inorderSuccessor = subTreePtr->getItem();
+        return removeNode(subTreePtr);
+    }else{
+        tmp = removeLeftmostNode(subTreePtr->getLeftChild(), inorderSuccessor);
+        subTreePtr->setLeftChild(tmp);
+        return subTreePtr;
+    }
+}
+
+/*
+template<class ItemType>
+auto BinarySearchTree<ItemType>::findNode(std::shared_ptr<BinaryNode<ItemType>> treePtr,
+                const ItemType& target) const{
+
+}*/
 
 template<class ItemType>
 bool BinarySearchTree<ItemType>::isEmpty() const{
     return rootPtr==nullptr;
 }
 
+
 template<class ItemType>
 int BinarySearchTree<ItemType>::getHeight() const{
-
+    return getHeightHelper();
 }
+
 
 template<class ItemType>
 int BinarySearchTree<ItemType>::getNumberOfNodes() const{
-    if(isEmpty()){
-        return 0;
-    }
+    return getNumberOfNodesHelper();
 }
 
 template<class ItemType>
 ItemType BinarySearchTree<ItemType>::getRootData() const throw(PrecondViolatedExcept){
-    return rootPtr->node;
+    return rootPtr->getNode();
 }
 
 template<class ItemType>
 void BinarySearchTree<ItemType>::setRootData(const ItemType& newData){
     rootPtr.setNode(newData);
 }
+
 
 template<class ItemType>
 bool BinarySearchTree<ItemType>::add(const ItemType& newEntry){
@@ -60,31 +147,44 @@ bool BinarySearchTree<ItemType>::add(const ItemType& newEntry){
     return true;
 }
 
+
 template<class ItemType>
 bool BinarySearchTree<ItemType>::remove(const ItemType& target){
-
+    bool isSuccessful = false;
+    this->rootPtr=removeValue(this->rootPtr, target, isSuccessful);
+    return isSuccessful;
 }
 
-//this is wrong come back to this when you know how to do thing
 template<class ItemType>
 void BinarySearchTree<ItemType>::clear(){
-    while(rootPtr!=nullptr){
-        delete rootPtr;
-    }
+    rootPtr=nullptr;
 }
 
-
+/*
 template<class ItemType>
 ItemType BinarySearchTree<ItemType>::getEntry(const ItemType& anEntry) const throw(NotFoundException){
 
-}
+}*/
 
+/*
 template<class ItemType>
 bool BinarySearchTree<ItemType>::contains(const ItemType& anEntry) const{
 
-}
+}*/
+
 
 template<class ItemType>
 void BinarySearchTree<ItemType>::preorderTraverse(void visit(ItemType&)) const{
-    
+    preorder(visit);
 }
+
+template<class ItemType>
+void BinarySearchTree<ItemType>::inorderTraverse(void visit(ItemType&)) const{
+    inorder(visit);
+}
+
+template<class ItemType>
+void BinarySearchTree<ItemType>::postorderTraverse(void visit(ItemType&)) const{
+    postorder(visit);
+}
+
