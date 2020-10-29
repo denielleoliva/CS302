@@ -32,7 +32,7 @@ class BinaryTreeInterface{
         //@pre: none
         //@post: the data in the root of the binary tree is as given
         //@param: newData, the data for the root
-        virtual bool setRootData(const ItemType& newData) = 0;
+        //virtual setRootData(const ItemType& newData) = 0;
 
         //Adds the given data to this binary tree
         //@param: newData, the data to add to the binary tree

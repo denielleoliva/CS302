@@ -2,8 +2,8 @@ CXX = g++
 CXX_FLAGS = -Wall -std=c++14
 
 TARGET = bst
-HEADERS = BinaryNode.h BinaryNodeTree.h BinarySearchTree.h 
-SRCS = BinaryNode.cpp BinaryNodeTree.cpp BinarySearchTree.cpp proj3.cpp
+HEADERS =  BinarySearchTree.h 
+SRCS =  BinarySearchTree.cpp proj3.cpp
 
 OBJECTS := $(patsubst %.cpp,%.o,$(SRCS))
 

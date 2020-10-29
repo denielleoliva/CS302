@@ -28,7 +28,7 @@ class BinarySearchTree : public BinaryNodeTree<ItemType>{
     // binary search tree.
     auto removeValue(std::shared_ptr<BinaryNode<ItemType>> subTreePtr,
                     const ItemType target,
-                    bool& isSuccessful) override;
+                    bool& isSuccessful);
     // Removes a given node from a tree while maintaining a binary search tree.
     auto removeNode(std::shared_ptr<BinaryNode<ItemType>> nodePtr);
     // Removes the leftmost node in the left subtree of the node
@@ -69,9 +69,9 @@ class BinarySearchTree : public BinaryNodeTree<ItemType>{
     //------------------------------------------------------------
     // Public Traversals Section.
     //------------------------------------------------------------
-    void preorderTraverse(void visit(ItemType&)) const;
-    void inorderTraverse(void visit(ItemType&)) const;
-    void postorderTraverse(void visit(ItemType&)) const;
+    void preorderTraverse() const;
+    void inorderTraverse() const;
+    void postorderTraverse() const;
     //------------------------------------------------------------
     // Overloaded Operator Section.
     //------------------------------------------------------------

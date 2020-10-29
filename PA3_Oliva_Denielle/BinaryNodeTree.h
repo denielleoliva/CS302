@@ -26,7 +26,7 @@ class BinaryNodeTree : public BinaryTreeInterface<ItemType>{
         auto balanceAdd(std::shared_ptr<BinaryNode<ItemType>> subTreePtr,
                             std::shared_ptr<BinaryNode<ItemType>> newNodePtr);
         //
-        virtual ItemType* removeValue(std::shared_ptr<BinaryNode<ItemType>> subTreePtr,
+        auto removeValue(std::shared_ptr<BinaryNode<ItemType>> subTreePtr,
                                     const ItemType target, bool& isSuccessful);
 
         //why do i need this

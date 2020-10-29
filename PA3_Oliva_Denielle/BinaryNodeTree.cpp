@@ -71,7 +71,7 @@ auto BinaryNodeTree<ItemType>::balanceAdd(std::shared_ptr<BinaryNode<ItemType>> 
 }
 
 template<class ItemType>
-ItemType* BinaryNodeTree<ItemType>::removeValue(std::shared_ptr<BinaryNode<ItemType>> subTreePtr,
+auto BinaryNodeTree<ItemType>::removeValue(std::shared_ptr<BinaryNode<ItemType>> subTreePtr,
                                     const ItemType target, bool& isSuccessful){
 	std::shared_ptr<BinaryNode<ItemType>>* tmp;
 

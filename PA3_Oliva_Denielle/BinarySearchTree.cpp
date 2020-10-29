@@ -1,7 +1,6 @@
 #include "BinarySearchTree.h"
-#include "BinaryNode.h"
+//#include "BinaryNode.h"
 
-#include <iostream>
 
 template<class ItemType>
 BinarySearchTree<ItemType>::BinarySearchTree(): rootPtr(nullptr){
@@ -94,7 +93,7 @@ auto BinarySearchTree<ItemType>::removeLeftmostNode(std::shared_ptr<BinaryNode<I
                            ItemType& inorderSuccessor){
     std::shared_ptr<BinaryNode<ItemType>>* tmp;
 
-    if(treePtr->getLeftChild()==nullptr){
+    if(subTreePtr->getLeftChild()==nullptr){
         inorderSuccessor = subTreePtr->getItem();
         return removeNode(subTreePtr);
     }else{
@@ -119,13 +118,13 @@ bool BinarySearchTree<ItemType>::isEmpty() const{
 
 template<class ItemType>
 int BinarySearchTree<ItemType>::getHeight() const{
-    return getHeightHelper();
+    return getHeightHelper(rootPtr);
 }
 
 
 template<class ItemType>
 int BinarySearchTree<ItemType>::getNumberOfNodes() const{
-    return getNumberOfNodesHelper();
+    return getNumberOfNodesHelper(rootPtr);
 }
 
 template<class ItemType>
@@ -174,17 +173,17 @@ bool BinarySearchTree<ItemType>::contains(const ItemType& anEntry) const{
 
 
 template<class ItemType>
-void BinarySearchTree<ItemType>::preorderTraverse(void visit(ItemType&)) const{
-    preorder(visit);
+void BinarySearchTree<ItemType>::preorderTraverse() const{
+    preorder(rootPtr);
 }
 
 template<class ItemType>
-void BinarySearchTree<ItemType>::inorderTraverse(void visit(ItemType&)) const{
-    inorder(visit);
+void BinarySearchTree<ItemType>::inorderTraverse() const{
+    inorder(rootPtr);
 }
 
 template<class ItemType>
-void BinarySearchTree<ItemType>::postorderTraverse(void visit(ItemType&)) const{
-    postorder(visit);
+void BinarySearchTree<ItemType>::postorderTraverse() const{
+    postorder(rootPtr);
 }
 
