@@ -1,34 +1,19 @@
-#include <iostream>
-#include <random>
-#include <algorithm>
-
-//#include "BinaryNode.h"
-//#include "BinaryNodeTree.h"
 #include "BinarySearchTree.h"
-//#include "BinaryTreeInterface.h"
 
-using namespace std;
+#include <iostream>
 
-void generateVals(BinarySearchTree<int> one, int maxVals);
+void generateVals(BinarySearchTree<int> bst){
+
+    for(int i = 0; i<100; i++){
+        bst.add(rand()%200);
+    }
+
+}
 
 int main(){
     BinarySearchTree<int> bst_one;
 
-    generateVals(bst_one,  100);
+    generateVals(bst_one);
 
-    cout<<"Height of tree: "<<bst_one.getHeight()<<endl;
-    cout<<endl;
-    bst_one.inorderTraverse();
-    cout<<endl<<endl;
-    
     return 0;
-
-}
-
-void generateVals(BinarySearchTree<int> one, int maxVals){
-    
-    for(int i = 0; i<maxVals;i++){
-        one.add(rand()%200);
-    }
-
 }

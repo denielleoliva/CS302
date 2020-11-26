@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "BinaryNode.h"
 
 template<class ItemType>

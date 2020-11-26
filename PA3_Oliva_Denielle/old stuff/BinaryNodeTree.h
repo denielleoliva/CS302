@@ -75,7 +75,7 @@ class BinaryNodeTree : public BinaryTreeInterface<ItemType>{
         BinaryNodeTree& operator=(const BinaryNodeTree& rightHandSide);
 };
 
-//#include "BinaryNodeTree.cpp"
+#include "BinaryNodeTree.cpp"
 #endif 
 
 
