@@ -12,11 +12,12 @@
 
 
 #pragma once
+#include <stdint.h>
 
 
 struct VoidRef_t
 {
-	U32   Key;
+	uint32_t   Key;
 	void* pContext;
 };
 

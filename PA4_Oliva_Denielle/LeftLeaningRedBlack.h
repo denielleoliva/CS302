@@ -73,33 +73,36 @@ public:
 	LeftLeaningRedBlack(void);
 	~LeftLeaningRedBlack(void);
 
-	bool IsEmpty(void) { return NULL == m_pRoot; }
+	bool IsEmpty(void) { return nullptr == m_pRoot; }
 
 	void FreeAll(void);
 	void Free(LLTB_t *pNode);
 
 	LLTB_t* NewNode(void);
 
-	void* LookUp(const U32 value);
+	void* LookUp(const uint32_t value);
 
 	bool Insert(VoidRef_t ref);
 	LLTB_t* InsertRec(LLTB_t *pNode, VoidRef_t ref);
 
-	void Delete(const U32 value);
-	LLTB_t* DeleteRec(LLTB_t *pNode, const U32 value);
+	void Delete(const uint32_t value);
+	LLTB_t* DeleteRec(LLTB_t *pNode, const uint32_t value);
 	LLTB_t* DeleteMin(LLTB_t *pNode);
 
 	void SanityCheck(void);
-	void SanityCheckRec(LLTB_t *pNode, bool isParentRed, U32 blackDepth, U32 &minBlack, U32 &maxBlack);
+	void SanityCheckRec(LLTB_t *pNode, bool isParentRed, uint32_t blackDepth, uint32_t &minBlack, uint32_t &maxBlack);
 
-	U32  KeyCount(void);
-	U32  KeyCountRec(LLTB_t *pNode);
+	uint32_t  KeyCount(void);
+	uint32_t  KeyCountRec(LLTB_t *pNode);
 
 	void LeafDepth(void);
-	U32  LeafDepthRec(LLTB_t *pNode, U32 depth, U32 ary[], U32 depthLimit, U32 blackDepth, U32 &minBlack, U32 &maxBlack);
+	uint32_t  LeafDepthRec(LLTB_t *pNode, uint32_t depth, uint32_t ary[], uint32_t depthLimit, uint32_t blackDepth, uint32_t &minBlack, uint32_t &maxBlack);
 
 	void Traverse(void);
-	void TraverseRec(LLTB_t *pNode, U32 &prev);
+	void TraverseRec(LLTB_t *pNode, uint32_t &prev);
+
+	LLTB_t* findParent(VoidRef_t ref);
+	bool getColor();
 };
 
 
